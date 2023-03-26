@@ -21,12 +21,14 @@ public class Zombies : MonoBehaviour
             if (canBePressed) {
                 gameObject.SetActive(false);
                 GameManager.instance.NoteHit();
+            } else {
+                GameManager.instance.NoteMissed();
             }
         } 
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        print("Zombie entered the trigger");
+        // print("Zombie entered the trigger");
         if(other.gameObject.tag == "Player") {
             canBePressed = true;
         }
@@ -34,10 +36,9 @@ public class Zombies : MonoBehaviour
     }
 
     private void OnTriggerExit2D(Collider2D other) {
-        print("Zombie exited the trigger");
+        // print("Zombie exited the trigger");
         if(other.gameObject.tag == "Player") {
             canBePressed = false;
-            GameManager.instance.NoteMissed();
         }
         
     }

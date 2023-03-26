@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // public AudioSource theMusic;
+    public AudioSource theMusic;
     public bool startPlaying;
     public Beats_Manager theBS;
     public static GameManager instance;
@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         instance = this;
-        // theBS = FindObjectOfType<Beats_Manager>();
+        theBS = FindObjectOfType<Beats_Manager>();
     }
 
     // Update is called once per frame
@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
             if (Input.anyKeyDown) {
                 startPlaying = true;
                 theBS.hasStarted = true;
-                // theMusic.Play();
+                theMusic.Play();
             }
         }
     }
