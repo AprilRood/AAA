@@ -6,6 +6,8 @@ public class Zombies : MonoBehaviour
 {
     public bool canBePressed;
 
+    public KeyCode keyToPress;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,19 +17,27 @@ public class Zombies : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(keyToPress)) {
+            if (canBePressed) {
+                gameObject.SetActive(false);
+                GameManager.instance.NoteHit();
+            }
+        } 
     }
 
-    void onTripperEnter2D(Collider2D other) {
-        if(other.tag == "Player") {
+    private void OnTriggerEnter2D(Collider2D other) {
+        print("Zombie entered the trigger");
+        if(other.gameObject.tag == "Player") {
             canBePressed = true;
         }
 
     }
 
-    void onTripperExit2D(Collider2D other) {
-        if(other.tag == "Player") {
+    private void OnTriggerExit2D(Collider2D other) {
+        print("Zombie exited the trigger");
+        if(other.gameObject.tag == "Player") {
             canBePressed = false;
+            GameManager.instance.NoteMissed();
         }
         
     }
