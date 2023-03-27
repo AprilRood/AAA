@@ -17,10 +17,10 @@ public class CarScript : MonoBehaviour
     void Update()
     {
         //moves the car up and down on the road
-        if (Input.GetKeyDown(KeyCode.UpArrow)) {
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) {
             gameObject.transform.position = new Vector2 (transform.position.x, topLane);
         }
-        if (Input.GetKeyDown(KeyCode.DownArrow)) {
+        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)) {
             gameObject.transform.position = new Vector2 (transform.position.x, bottomLane);
         }
     }
