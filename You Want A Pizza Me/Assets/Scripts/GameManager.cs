@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public bool startPlaying;
     public Beats_Manager theBS;
     public static GameManager instance;
+    public bool gameStarted;
 
     public int playerHealth = 100;
     public int healthPerMiss = 10;
