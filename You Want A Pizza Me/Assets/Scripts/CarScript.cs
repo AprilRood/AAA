@@ -6,6 +6,7 @@ public class CarScript : MonoBehaviour
 {
     public float topLane; //top lane of the road
     public float bottomLane; //bottom lane of the road
+    
 
     // Start is called before the first frame update
     void Start()

@@ -23,6 +23,11 @@ public class Beats_Manager : MonoBehaviour
         } else {
             transform.position -= new Vector3(beatTempo * Time.deltaTime, 0f, 0f);
         }
+
+        // if(transform.position.x < -11f)
+        // {
+        //     Destroy(gameObject);
+        // }
     }
 }
 
