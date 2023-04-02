@@ -5,7 +5,9 @@ using UnityEngine;
 public class Beats_Manager : MonoBehaviour
 {
     public float beatTempo;
-    public bool hasStarted;
+    public bool hasStarted = true;
+
+    public AudioSource zombieMoan;
 
     // Start is called before the first frame update
     void Start()
@@ -16,13 +18,13 @@ public class Beats_Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!hasStarted) {
-            // if(Input.anyKeyDown) {
-            //     hasStarted = true;
-            // }
-        } else {
+        // if(!hasStarted) {
+        //     // if(Input.anyKeyDown) {
+        //     //     hasStarted = true;
+        //     // }
+        // } else {
             transform.position -= new Vector3(beatTempo * Time.deltaTime, 0f, 0f);
-        }
+        // }
 
         // if(transform.position.x < -11f)
         // {

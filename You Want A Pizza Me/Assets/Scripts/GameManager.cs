@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public AudioSource theMusic;
-    public bool startPlaying;
+    public bool startPlaying = true;
     public Beats_Manager theBS;
     public static GameManager instance;
     public bool gameStarted;
@@ -18,18 +18,21 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         theBS = FindObjectOfType<Beats_Manager>();
+        startPlaying = true;
+                theBS.hasStarted = true;
+                theMusic.Play();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!startPlaying) {
-            if (Input.anyKeyDown) {
-                startPlaying = true;
-                theBS.hasStarted = true;
-                theMusic.Play();
-            }
-        }
+        // if (!startPlaying) {
+        //     if (Input.anyKeyDown) {
+        //         startPlaying = true;
+        //         theBS.hasStarted = true;
+        //         theMusic.Play();
+        //     }
+        // }
     }
 
     public void NoteHit() {
