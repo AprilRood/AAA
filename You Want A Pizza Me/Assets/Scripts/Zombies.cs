@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class Zombies : MonoBehaviour
 {
-    public bool canBePressed;
+    public GameObject HealthManager;
+    private bool beatPlayer;
+    // public bool canBePressed;
+    // public KeyCode keyToPress;
+    // public int healthPerMiss = 10;
 
-    public KeyCode keyToPress;
+    // public GameObject HealthManager; 
 
     // Start is called before the first frame update
     void Start()
@@ -17,29 +21,36 @@ public class Zombies : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(keyToPress)) {
-            if (canBePressed) {
-                gameObject.SetActive(false);
-                GameManager.instance.NoteHit();
-            } else {
-                GameManager.instance.NoteMissed();
-            }
-        } 
-    }
-
-    private void OnTriggerEnter2D(Collider2D other) {
-        // print("Zombie entered the trigger");
-        if(other.gameObject.tag == "Player") {
-            canBePressed = true;
+        if(transform.position.x < -10 && transform.position.x > -19) {
+            Destroy(gameObject);
         }
 
+        if(transform.position.x <= -5 && transform.position.x > -19 && !beatPlayer) {
+            HealthManager.GetComponent<HealthManager>().TakeDamage(10);
+            beatPlayer = true;
+        }
+        // if (Input.GetKeyDown(keyToPress)) {
+        //     if (canBePressed) {
+        //         gameObject.SetActive(false);
+        //         GameManager.instance.NoteHit();
+        //     } else {
+        //         GameManager.instance.NoteMissed();
+        //         HealthManager.GetComponent<HealthManager>().TakeDamage(10);
+        //     }
+        // } 
     }
 
-    private void OnTriggerExit2D(Collider2D other) {
-        // print("Zombie exited the trigger");
-        if(other.gameObject.tag == "Player") {
-            canBePressed = false;
-        }
-        
-    }
+    // private void OnTriggerEnter2D(Collider2D other) {
+    //     // print("Zombie entered the trigger");
+    //     if(other.gameObject.tag == "Player") {
+    //         canBePressed = true;
+    //     }
+    // }
+
+    // private void OnTriggerExit2D(Collider2D other) {
+    //     // print("Zombie exited the trigger");
+    //     if(other.gameObject.tag == "Player") {
+    //         canBePressed = false;
+    //     }
+    // }
 }

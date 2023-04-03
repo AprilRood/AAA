@@ -10,8 +10,8 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public bool gameStarted;
 
-    public int playerHealth = 100;
-    public int healthPerMiss = 10;
+    // public int playerHealth = 100;
+    // public int healthPerMiss = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -19,8 +19,8 @@ public class GameManager : MonoBehaviour
         instance = this;
         theBS = FindObjectOfType<Beats_Manager>();
         startPlaying = true;
-                theBS.hasStarted = true;
-                theMusic.Play();
+        theBS.hasStarted = true;
+        theMusic.Play();
     }
 
     // Update is called once per frame
@@ -36,12 +36,12 @@ public class GameManager : MonoBehaviour
     }
 
     public void NoteHit() {
-        Debug.Log("Hit on time");
+        // Debug.Log("Hit on time");
     }
 
     public void NoteMissed() {
-        Debug.Log("Missed Note");
-        playerHealth -= healthPerMiss;
+        // Debug.Log("Missed Note");
+        // playerHealth -= healthPerMiss;
     }
 
 }
